@@ -1,5 +1,13 @@
 import React, { FC, ReactNode } from "react";
-import { Text, StyleSheet, StyleProp, TextStyle } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  TextPropTypes,
+  TextPropsIOS,
+  TextProps,
+} from "react-native";
 import { colors } from "../theme/colors";
 import { fonts } from "../theme/fonts";
 
@@ -11,9 +19,16 @@ type Props = {
   size?: Size;
 };
 
-const TextComponent: FC<Props> = ({ children, style, size = "medium" }) => {
+const TextComponent: FC<Props & TextProps> = ({
+  children,
+  style,
+  size = "medium",
+  ...props
+}) => {
   return (
-    <Text style={[{ ...styles[size] }, styles.text, style]}>{children}</Text>
+    <Text style={[{ ...styles[size] }, styles.text, style]} {...props}>
+      {children}
+    </Text>
   );
 };
 
