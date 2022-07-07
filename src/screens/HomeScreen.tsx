@@ -5,11 +5,14 @@ import { colors } from "../theme/colors";
 
 import backgroundImage from "../../assets/bgs/background_v1.png";
 import { Button, Text } from "../components";
+import Cards from "../components/UI/Cards";
+import { DATA } from "../data";
 
 const HomeScreen: FC = (props) => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
+      <Cards data={DATA} />
     </View>
   );
 };

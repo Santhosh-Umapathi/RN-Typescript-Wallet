@@ -18,7 +18,7 @@ const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 const MainStack: FC = () => {
   return (
     <Navigator
-      initialRouteName="Welcome"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: colors.graylight,
