@@ -2,6 +2,7 @@ import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import MainNavigator from "./src/navigation/mainNavigator";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 
 export default function App() {
@@ -14,14 +15,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <WelcomeScreen />;
+  return <MainNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

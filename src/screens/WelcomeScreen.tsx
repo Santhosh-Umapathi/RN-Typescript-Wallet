@@ -5,8 +5,16 @@ import { colors } from "../theme/colors";
 
 import backgroundImage from "../../assets/bgs/background_v1.png";
 import { Button, Text } from "../components";
+import { RootStackParamList } from "../navigation/AppStack";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-const WelcomeScreen: FC = (props) => {
+type WelcomeScreen = NativeStackNavigationProp<RootStackParamList, "Welcome">;
+
+type WelcomeScreenProps = {
+  navigation: WelcomeScreen;
+};
+
+const WelcomeScreen: FC<WelcomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -26,7 +34,13 @@ const WelcomeScreen: FC = (props) => {
           {"Best payment method, connects your money to your friends, family"}
         </Text>
 
-        <Button onPress={() => {}} title="Enter" activeOpacity={0.8} />
+        <Button
+          onPress={() => {
+            navigation.navigate("Home");
+          }}
+          title="Enter"
+          activeOpacity={0.8}
+        />
       </View>
     </View>
   );
