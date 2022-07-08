@@ -1,18 +1,35 @@
-import AppLoading from "expo-app-loading";
-import { useFonts } from "expo-font";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
 import MainNavigator from "./src/navigation/mainNavigator";
-import WelcomeScreen from "./src/screens/WelcomeScreen";
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  const [appIsReady, setAppIsReady] = useState<boolean>(false);
+
+  let customFonts = {
     "Lato-Bold": require("./assets/fonts/Lato-Bold.ttf"),
     "Lato-Regular": require("./assets/fonts/Lato-Regular.ttf"),
-  });
+  };
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await Font.loadAsync(customFonts).then(
+          async () => await SplashScreen.hideAsync()
+        );
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  if (!appIsReady) {
+    return null;
   }
 
   return <MainNavigator />;
