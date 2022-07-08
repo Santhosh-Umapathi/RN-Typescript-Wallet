@@ -23,7 +23,8 @@ const HomeScreen: FC = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: colors.secondary,
+    backgroundColor: colors.secondary,
+    justifyContent: "space-between",
   },
 });
 

@@ -32,71 +32,69 @@ const CardItem: FC<{ item: CardType; index: number; length: number }> = ({
   const lastItem = index === length - 1;
 
   return (
-    <TouchableOpacity style={{ justifyContent: "center" }}>
-      <View
+    <TouchableOpacity
+      style={{
+        justifyContent: "center",
+        width: 320,
+        marginRight: lastItem ? 10 : 40,
+        overflow: "hidden",
+        borderRadius: 25,
+      }}
+    >
+      <ImageBackground
+        source={cardBg}
         style={{
-          backgroundColor: "orange",
-          height: "90%",
+          backgroundColor:
+            index % 2
+              ? colors.accent
+              : lastItem
+              ? colors.grayDark
+              : colors.primary,
+          height: "100%",
           borderRadius: 25,
           overflow: "hidden",
-          width: 320,
-          marginRight: lastItem ? 10 : 40,
         }}
+        resizeMode="cover"
       >
-        <ImageBackground
-          source={cardBg}
+        <View
           style={{
-            backgroundColor:
-              index % 2
-                ? colors.accent
-                : lastItem
-                ? colors.grayDark
-                : colors.primary,
-            height: "100%",
-            borderRadius: 25,
-            overflow: "hidden",
+            flex: 1,
+            justifyContent: "space-between",
           }}
-          resizeMode="cover"
         >
+          <Text
+            style={{ color: colors.white, marginTop: 20, marginLeft: 20 }}
+          >{`******${item.accountNo}`}</Text>
+
           <View
             style={{
-              flex: 1,
+              margin: 20,
+              flexDirection: "row",
               justifyContent: "space-between",
             }}
           >
-            <Text
-              style={{ color: colors.white, marginTop: 25, marginLeft: 25 }}
-            >{`******${item.accountNo}`}</Text>
+            <View>
+              <Text
+                size="small"
+                style={{
+                  color: lastItem ? colors.white : colors.secondary,
+                  marginBottom: 5,
+                }}
+              >{`Total Balance`}</Text>
 
-            <View
-              style={{
-                margin: 20,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <View>
-                <Text
-                  style={{
-                    color: lastItem ? colors.white : colors.secondary,
-                    marginBottom: 5,
-                  }}
-                >{`Total Balance`}</Text>
-
-                <Text
-                  style={{ color: lastItem ? colors.white : colors.secondary }}
-                >{`$ ${item.balance}`}</Text>
-              </View>
-
-              <Image
-                source={item.logo}
-                style={{ height: 30, width: 100 }}
-                resizeMode="contain"
-              />
+              <Text
+                style={{ color: lastItem ? colors.white : colors.secondary }}
+              >{`$ ${item.balance}`}</Text>
             </View>
+
+            <Image
+              source={item.logo}
+              style={{ height: 30, width: 100 }}
+              resizeMode="contain"
+            />
           </View>
-        </ImageBackground>
-      </View>
+        </View>
+      </ImageBackground>
     </TouchableOpacity>
   );
 };
@@ -113,10 +111,9 @@ const Cards: FC<CardSection> = ({ data }) => {
           return <CardItem {...{ item, index, length: data.length }} />;
         }}
         contentContainerStyle={{
-          alignItems: "center",
           paddingHorizontal: 20,
-          paddingLeft: 30,
         }}
+        style={{ height: 200 }}
       />
     </View>
   );
@@ -124,8 +121,8 @@ const Cards: FC<CardSection> = ({ data }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.white,
+    paddingVertical: 30,
   },
 });
 
