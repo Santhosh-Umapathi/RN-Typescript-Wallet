@@ -1,3 +1,5 @@
+import { colors } from "../theme/colors";
+
 export const DATA = [
   {
     id: 1,
@@ -19,5 +21,41 @@ export const DATA = [
     balance: 4000,
     alias: "Sandler",
     logo: require("../../assets/cards/visa_white.png"),
+  },
+];
+
+export const TRANSACTION_DATA = [
+  {
+    id: 1,
+    title: "Taxt",
+    subtitle: "Uber Car",
+    amount: "-$10",
+    date: "20/2/2022",
+    art: {
+      icon: "local-taxi",
+      background: colors.primary,
+    },
+  },
+  {
+    id: 2,
+    title: "Shopping",
+    subtitle: "Amazon books",
+    amount: "-$30",
+    date: "10/5/2022",
+    art: {
+      icon: "shopping-cart",
+      background: colors.secondary,
+    },
+  },
+  {
+    id: 3,
+    title: "Travel",
+    subtitle: "Expedia - Venice Trip",
+    amount: "-$300",
+    date: "1/3/2022",
+    art: {
+      icon: "flight",
+      background: colors.tertiary,
+    },
   },
 ];

@@ -6,13 +6,16 @@ import { colors } from "../theme/colors";
 import backgroundImage from "../../assets/bgs/background_v1.png";
 import { Button, Text } from "../components";
 import Cards from "../components/UI/Cards";
-import { DATA } from "../data";
+import { DATA, TRANSACTION_DATA } from "../data";
+import Transactions from "../components/UI/Transactions";
 
 const HomeScreen: FC = (props) => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
       <Cards data={DATA} />
+
+      <Transactions data={TRANSACTION_DATA} />
     </View>
   );
 };

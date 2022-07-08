@@ -21,7 +21,7 @@ const MainStack: FC = () => {
       initialRouteName="Home"
       screenOptions={{
         headerStyle: {
-          backgroundColor: colors.graylight,
+          backgroundColor: colors.white,
         },
         headerTintColor: colors.secondary,
         headerShadowVisible: false,

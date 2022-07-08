@@ -15,7 +15,7 @@ type Size = "small" | "medium" | "large";
 
 type Props = {
   style?: StyleProp<TextStyle>;
-  children: string; // ReactNode;
+  children: ReactNode;
   size?: Size;
 };
 
