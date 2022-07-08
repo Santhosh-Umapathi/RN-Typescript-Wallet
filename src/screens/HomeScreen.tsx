@@ -7,8 +7,9 @@ import { colors } from "../theme/colors";
 import { Cards, SendMoney, Transactions } from "../components/UI";
 // Data
 import { CARDS_DATA, SEND_MONEY_DATA, TRANSACTION_DATA } from "../data";
+import { HomeScreenProps } from "../types/screens";
 
-const HomeScreen: FC = () => {
+const HomeScreen: FC<HomeScreenProps> = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />

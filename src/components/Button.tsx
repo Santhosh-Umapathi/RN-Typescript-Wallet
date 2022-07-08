@@ -22,12 +22,14 @@ const Button: FC<Props & TouchableOpacityProps> = ({
   textStyle,
   style,
   onPress,
+  children,
   ...props
 }) => {
   return (
     <TouchableOpacity onPress={onPress} {...props}>
       <View style={[styles.button, style]}>
         <Text style={textStyle}>{title}</Text>
+        {children}
       </View>
     </TouchableOpacity>
   );
@@ -42,6 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginHorizontal: 30,
     marginVertical: 10,
+    flexDirection: "row",
   },
 });
 

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 // Theme
 import { colors } from "../../theme/colors";
 // Components
@@ -15,20 +16,29 @@ import Text from "../Text";
 import cardBg from "../../../assets/bgs/background_transparent.png";
 // Types
 import { CardSection, CardType } from "../../types/components";
+import { HomeScreenProps } from "../../types/screens";
 
-const CardItem: FC<{ item: CardType; index: number; length: number }> = ({
-  item,
-  index,
-  length,
-}) => {
+export const CardItem: FC<{
+  item: CardType;
+  index: number;
+  length: number;
+  cardScreen: boolean;
+}> = ({ item, index, length, cardScreen = false }) => {
+  const { navigate } = useNavigation<HomeScreenProps["navigation"]>();
+
   const lastItem = index === length - 1;
+
+  const goToCardScreen = (): void => {
+    !cardScreen && navigate("Card", item);
+  };
 
   return (
     <TouchableOpacity
+      onPress={goToCardScreen}
       style={{
         justifyContent: "center",
         width: 320,
-        marginRight: lastItem ? 10 : 40,
+        marginRight: cardScreen ? 0 : lastItem ? 10 : 40,
         overflow: "hidden",
         borderRadius: 25,
       }}
