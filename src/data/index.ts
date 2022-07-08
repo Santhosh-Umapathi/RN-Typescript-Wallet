@@ -1,6 +1,8 @@
 import { colors } from "../theme/colors";
+//Types
+import { CardSection, TransactionSection } from "../types/components";
 
-export const DATA = [
+export const CARDS_DATA: CardSection["data"] = [
   {
     id: 1,
     accountNo: "1234",
@@ -24,7 +26,7 @@ export const DATA = [
   },
 ];
 
-export const TRANSACTION_DATA = [
+export const TRANSACTION_DATA: TransactionSection["data"] = [
   {
     id: 1,
     title: "Taxt",

@@ -1,33 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect, FC } from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  ImageSourcePropType,
-  ImageStyle,
-  ViewStyle,
-  ImageProps,
-  TouchableOpacity,
-  TouchableOpacityProps,
-} from "react-native";
+import React, { FC } from "react";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+// Theme
 import { colors } from "../../theme/colors";
-import { StyleProp } from "react-native";
+// Types
+import { ProfileProps } from "../../types/components";
 
-type ProfileProps = {
-  img: ImageSourcePropType;
-  style?: StyleProp<ImageStyle>;
-  containerStyle?: StyleProp<ViewStyle>;
-};
-
-const Profile: FC<ProfileProps & TouchableOpacityProps> = ({
+const Profile: FC<ProfileProps> = ({
   img,
   containerStyle,
   style,
   onPress,
+  ...props
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} {...props}>
       <View style={[styles.container, containerStyle]}>
         <Image source={img} style={style} resizeMode={"cover"} />
       </View>

@@ -1,17 +1,15 @@
 import React, { FC } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import WelcomeScreen from "../screens/WelcomeScreen";
-import HomeScreen from "../screens/HomeScreen";
+// Theme
 import { colors } from "../theme/colors";
-import Greeting from "../components/UI/Greeting";
-import Profile from "../components/UI/Profile";
-
+// Components
+import { Greeting, Profile } from "../components/UI";
+//Image
 import avatar from "../../assets/avi/avatar.png";
-
-export type RootStackParamList = {
-  Welcome: undefined;
-  Home: undefined;
-};
+// Screens
+import { WelcomeScreen, HomeScreen } from "../screens";
+//Types
+import { RootStackParamList } from "../types/navigation";
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
@@ -44,6 +42,7 @@ const MainStack: FC = () => {
             <Profile
               img={avatar}
               style={{ width: 40, height: 40 }}
+              activeOpacity={0.6}
               {...props}
             />
           ),

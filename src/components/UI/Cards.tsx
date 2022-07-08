@@ -1,28 +1,20 @@
-import React, { useState, useEffect, FC } from "react";
+import React, { FC } from "react";
 import {
   View,
   StyleSheet,
-  ImageSourcePropType,
   FlatList,
   ImageBackground,
   TouchableOpacity,
   Image,
 } from "react-native";
+// Theme
 import { colors } from "../../theme/colors";
+// Components
 import Text from "../Text";
+// Image
 import cardBg from "../../../assets/bgs/background_transparent.png";
-
-type CardType = {
-  id: number;
-  accountNo: string;
-  balance: number;
-  alias?: string;
-  logo: ImageSourcePropType;
-};
-
-type CardSection = {
-  data: CardType[];
-};
+// Types
+import { CardSection, CardType } from "../../types/components";
 
 const CardItem: FC<{ item: CardType; index: number; length: number }> = ({
   item,
@@ -106,10 +98,10 @@ const Cards: FC<CardSection> = ({ data }) => {
         data={data}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(key: CardType) => `${key.id}`}
-        renderItem={({ item, index }) => {
-          return <CardItem {...{ item, index, length: data.length }} />;
-        }}
+        keyExtractor={(key) => `${key.id}`}
+        renderItem={({ item, index }) => (
+          <CardItem {...{ item, index, length: data.length }} />
+        )}
         contentContainerStyle={{
           paddingHorizontal: 20,
         }}

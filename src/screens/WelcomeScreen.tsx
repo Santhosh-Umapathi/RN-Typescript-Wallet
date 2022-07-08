@@ -5,14 +5,9 @@ import { colors } from "../theme/colors";
 
 import backgroundImage from "../../assets/bgs/background_v1.png";
 import { Button, Text } from "../components";
-import { RootStackParamList } from "../navigation/AppStack";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-type WelcomeScreen = NativeStackNavigationProp<RootStackParamList, "Welcome">;
-
-type WelcomeScreenProps = {
-  navigation: WelcomeScreen;
-};
+//Types
+import { WelcomeScreenProps } from "../types/screens";
 
 const WelcomeScreen: FC<WelcomeScreenProps> = ({ navigation }) => {
   return (

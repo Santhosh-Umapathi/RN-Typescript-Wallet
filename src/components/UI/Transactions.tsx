@@ -1,40 +1,13 @@
-import React, { useState, useEffect, FC } from "react";
-import {
-  View,
-  StyleSheet,
-  ImageSourcePropType,
-  FlatList,
-  ImageBackground,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
-
+import React, { FC } from "react";
+import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+// Theme
 import { colors } from "../../theme/colors";
+// Components
 import Text from "../Text";
-import cardBg from "../../../assets/bgs/background_transparent.png";
-
-export type TransactionType = {
-  id: number;
-  title: string;
-  subtitle: string;
-  amount: string;
-  date: string;
-  art: {
-    icon: string;
-    background: string;
-  };
-};
-
-export type TransactionSection = {
-  data: TransactionType[];
-};
-
-export type TransactionAviProps = {
-  icon: string;
-  background: string;
-};
+import TransactionIcon from "./TransactionIcon";
+// Types
+import { TransactionSection, TransactionType } from "../../types/components";
 
 const CardItem: FC<{
   item: TransactionType;
@@ -55,22 +28,10 @@ const CardItem: FC<{
         }}
       >
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
-          <View
-            style={{
-              backgroundColor: item.art.background,
-              width: 50,
-              height: 50,
-              borderRadius: 10,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <MaterialIcons
-              name={item.art.icon}
-              size={30}
-              color={colors.white}
-            />
-          </View>
+          <TransactionIcon
+            background={item.art.background}
+            icon={item.art.icon}
+          />
           <View
             style={{
               justifyContent: "center",
@@ -165,10 +126,10 @@ const Transactions: FC<TransactionSection> = ({ data }) => {
       <FlatList
         data={data}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(key: TransactionType) => `${key.id}`}
-        renderItem={({ item, index }) => {
-          return <CardItem {...{ item, index, length: data.length }} />;
-        }}
+        keyExtractor={(key) => `${key.id}`}
+        renderItem={({ item, index }) => (
+          <CardItem {...{ item, index, length: data.length }} />
+        )}
         contentContainerStyle={{
           paddingHorizontal: 20,
           marginTop: 20,

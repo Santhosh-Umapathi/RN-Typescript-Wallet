@@ -1,19 +1,18 @@
+import React, { FC } from "react";
+import { View, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect, FC } from "react";
-import { View, StyleSheet, Image } from "react-native";
+//Theme
 import { colors } from "../theme/colors";
+// Components
+import { Cards, Transactions } from "../components/UI";
+// Data
+import { CARDS_DATA, TRANSACTION_DATA } from "../data";
 
-import backgroundImage from "../../assets/bgs/background_v1.png";
-import { Button, Text } from "../components";
-import Cards from "../components/UI/Cards";
-import { DATA, TRANSACTION_DATA } from "../data";
-import Transactions from "../components/UI/Transactions";
-
-const HomeScreen: FC = (props) => {
+const HomeScreen: FC = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
-      <Cards data={DATA} />
+      <Cards data={CARDS_DATA} />
 
       <Transactions data={TRANSACTION_DATA} />
     </View>

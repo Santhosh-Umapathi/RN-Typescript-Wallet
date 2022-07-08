@@ -1,18 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect, FC } from "react";
-import { View, StyleSheet, Image } from "react-native";
+import React, { FC } from "react";
+import { View } from "react-native";
+// Theme
 import { colors } from "../../theme/colors";
-
-import { Button, Text } from "../../components";
-
-type GreetingProps = {
-  mainText: string;
-  subText: string;
-};
+// Components
+import { Text } from "../../components";
+// Types
+import { GreetingProps } from "../../types/components";
 
 const Greeting: FC<GreetingProps> = ({ mainText, subText }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={{ color: colors.grayDark }}>{mainText}</Text>
       <Text size="small" style={{ color: colors.grayDark }}>
         {subText}
@@ -20,12 +17,5 @@ const Greeting: FC<GreetingProps> = ({ mainText, subText }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // backgroundColor: colors.secondary,
-  },
-});
 
 export default Greeting;
