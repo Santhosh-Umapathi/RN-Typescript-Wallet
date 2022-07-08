@@ -4,9 +4,9 @@ import { StatusBar } from "expo-status-bar";
 //Theme
 import { colors } from "../theme/colors";
 // Components
-import { Cards, Transactions } from "../components/UI";
+import { Cards, SendMoney, Transactions } from "../components/UI";
 // Data
-import { CARDS_DATA, TRANSACTION_DATA } from "../data";
+import { CARDS_DATA, SEND_MONEY_DATA, TRANSACTION_DATA } from "../data";
 
 const HomeScreen: FC = () => {
   return (
@@ -15,6 +15,7 @@ const HomeScreen: FC = () => {
       <Cards data={CARDS_DATA} />
 
       <Transactions data={TRANSACTION_DATA} />
+      <SendMoney data={SEND_MONEY_DATA} />
     </View>
   );
 };

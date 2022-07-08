@@ -50,3 +50,15 @@ export type TransactionAviProps = {
   icon: string;
   background: string;
 };
+
+export type SendMoney = {
+  id: number;
+  name: string;
+  amount: string;
+  background: string;
+  img: ImageSourcePropType;
+};
+
+export type SendMoneySection = {
+  data: SendMoney[];
+};

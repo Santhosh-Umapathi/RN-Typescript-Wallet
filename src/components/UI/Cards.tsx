@@ -113,7 +113,7 @@ const Cards: FC<CardSection> = ({ data }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.graylight,
     paddingVertical: 30,
   },
 });

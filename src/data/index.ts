@@ -1,6 +1,10 @@
 import { colors } from "../theme/colors";
 //Types
-import { CardSection, TransactionSection } from "../types/components";
+import {
+  CardSection,
+  SendMoneySection,
+  TransactionSection,
+} from "../types/components";
 
 export const CARDS_DATA: CardSection["data"] = [
   {
@@ -59,5 +63,29 @@ export const TRANSACTION_DATA: TransactionSection["data"] = [
       icon: "flight",
       background: colors.tertiary,
     },
+  },
+];
+
+export const SEND_MONEY_DATA: SendMoneySection["data"] = [
+  {
+    id: 1,
+    amount: "$100",
+    name: "John Doe",
+    background: colors.primary,
+    img: require("../../assets/portraits/1.jpg"),
+  },
+  {
+    id: 2,
+    amount: "$500",
+    name: "Jessica Beil",
+    background: colors.secondary,
+    img: require("../../assets/portraits/2.jpg"),
+  },
+  {
+    id: 3,
+    amount: "$80",
+    name: "Michael Smith",
+    background: colors.tertiary,
+    img: require("../../assets/portraits/3.jpg"),
   },
 ];
