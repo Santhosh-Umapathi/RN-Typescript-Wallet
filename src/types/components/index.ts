@@ -4,6 +4,8 @@ import {
   StyleProp,
   ViewStyle,
   TouchableOpacityProps,
+  TextStyle,
+  TextProps,
 } from "react-native";
 
 export type CardType = {
@@ -62,3 +64,17 @@ export type SendMoney = {
 export type SendMoneySection = {
   data: SendMoney[];
 };
+
+export type Size = "small" | "medium" | "large";
+
+export type CustomTextProps = {
+  style?: StyleProp<TextStyle>;
+  size?: Size;
+  bold?: boolean;
+} & TextProps;
+
+export type CustomButtonProps = {
+  title: string;
+  textStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
+} & TouchableOpacityProps;

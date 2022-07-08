@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -12,14 +13,13 @@ import avatar from "../../assets/avi/avatar.png";
 import { WelcomeScreen, HomeScreen, CardScreen } from "../screens";
 //Types
 import { RootStackParamList } from "../types/navigation";
-import { TouchableOpacity } from "react-native";
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
 const MainStack: FC = () => {
   return (
     <Navigator
-      initialRouteName="Home"
+      initialRouteName="Welcome"
       screenOptions={{
         headerStyle: {
           backgroundColor: colors.graylight,

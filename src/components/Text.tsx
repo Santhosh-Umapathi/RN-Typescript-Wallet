@@ -1,32 +1,22 @@
-import React, { FC, ReactNode } from "react";
-import {
-  Text,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  TextPropTypes,
-  TextPropsIOS,
-  TextProps,
-} from "react-native";
+import React, { FC } from "react";
+import { Text, StyleSheet } from "react-native";
+// Theme
 import { colors } from "../theme/colors";
 import { fonts } from "../theme/fonts";
+import { CustomTextProps } from "../types/components";
 
-type Size = "small" | "medium" | "large";
-
-type Props = {
-  style?: StyleProp<TextStyle>;
-  children: ReactNode;
-  size?: Size;
-};
-
-const TextComponent: FC<Props & TextProps> = ({
+const TextComponent: FC<CustomTextProps> = ({
   children,
   style,
   size = "medium",
+  bold = false,
   ...props
 }) => {
   return (
-    <Text style={[{ ...styles[size] }, styles.text, style]} {...props}>
+    <Text
+      style={[{ ...styles[size] }, styles.text, style, bold && styles.bold]}
+      {...props}
+    >
       {children}
     </Text>
   );
@@ -38,6 +28,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
+  },
+  bold: {
+    fontWeight: "bold",
+    fontFamily: fonts.latoBold,
   },
   text: { color: colors.white },
   medium: {

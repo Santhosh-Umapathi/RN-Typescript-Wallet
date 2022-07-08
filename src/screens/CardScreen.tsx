@@ -2,18 +2,20 @@ import React, { FC } from "react";
 import { View, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
-
 //Theme
 import { colors } from "../theme/colors";
 // Types
 import { CardScreenProps } from "../types/screens/index";
+// Components
 import { Button, Text } from "../components";
 import { CardItem } from "../components/UI/Cards";
-import { CARDS_DATA } from "../data/index";
+// Data
+import { CARDS_DATA } from "../data";
 
 const CardScreen: FC<CardScreenProps> = ({ navigation, route }) => {
   const item = route.params;
-  console.log("🚀 --- item", item);
+
+  const goBack = (): void => navigation.goBack();
 
   return (
     <View style={styles.container}>
@@ -48,7 +50,7 @@ const CardScreen: FC<CardScreenProps> = ({ navigation, route }) => {
           cardScreen
         />
       </View>
-      <Button title="Cancel" style={{ marginHorizontal: 60 }}>
+      <Button title="Cancel" style={{ marginHorizontal: 60 }} onPress={goBack}>
         <Ionicons
           name="card"
           size={20}

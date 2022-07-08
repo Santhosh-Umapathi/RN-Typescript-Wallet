@@ -102,26 +102,29 @@ const Transactions: FC<TransactionSection> = ({ data }) => {
           style={{
             color: colors.secondary,
           }}
+          bold
         >
           Transactions
         </Text>
 
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text
-            size="small"
-            style={{ color: colors.secondary, marginRight: 5 }}
+        <TouchableOpacity>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Recent
-          </Text>
+            <Text
+              size="small"
+              style={{ color: colors.secondary, marginRight: 5 }}
+            >
+              Recent
+            </Text>
 
-          <Ionicons name="caret-down" size={20} color={colors.secondary} />
-        </View>
+            <Ionicons name="caret-down" size={20} color={colors.secondary} />
+          </View>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={data}

@@ -1,19 +1,13 @@
 import React, { FC, ReactNode, useRef } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-  Image,
-} from "react-native";
-import Animated from "react-native-reanimated";
+import { View, TouchableOpacity, FlatList, Image } from "react-native";
 import BottomSheet from "reanimated-bottom-sheet";
 import { MaterialIcons } from "@expo/vector-icons";
-
+// Components
 import Text from "../Text";
+// Types
 import { SendMoneySection } from "../../types/components";
+// Theme
 import { colors } from "../../theme/colors";
-import { SEND_MONEY_DATA } from "../../data";
 
 const SendMoney: FC<SendMoneySection> = ({ data }) => {
   const sheetRef = useRef<BottomSheet>(null);
@@ -21,6 +15,8 @@ const SendMoney: FC<SendMoneySection> = ({ data }) => {
   const snapPoints: (number | string)[] = [280, 85];
 
   const renderContent = (): ReactNode => {
+    const sendMoneyHandler = (): void => sheetRef.current?.snapTo(1);
+    const openSheet = (): void => sheetRef.current?.snapTo(0);
     return (
       <View
         style={{
@@ -37,8 +33,10 @@ const SendMoney: FC<SendMoneySection> = ({ data }) => {
             marginBottom: 30,
           }}
         >
-          <Text style={{ color: colors.grayDark }}>{"Send Money to"}</Text>
-          <TouchableOpacity onPress={() => {}}>
+          <Text bold style={{ color: colors.grayDark }}>
+            {"Send Money to"}
+          </Text>
+          <TouchableOpacity onPress={openSheet}>
             <View
               style={{
                 flexDirection: "row",
@@ -63,35 +61,37 @@ const SendMoney: FC<SendMoneySection> = ({ data }) => {
           contentContainerStyle={{ paddingHorizontal: 25, height: 140 }}
           renderItem={({ item }) => {
             return (
-              <View
-                style={{
-                  backgroundColor: item.background,
-                  width: 100,
-                  paddingHorizontal: 10,
-                  paddingTop: 10,
-                  borderRadius: 10,
-                  marginRight: 25,
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  source={item.img}
-                  style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
-                  resizeMode="cover"
-                />
-                <Text
-                  size="small"
+              <TouchableOpacity onPress={sendMoneyHandler}>
+                <View
                   style={{
-                    marginTop: 20,
-                    width: "100%",
-                    textAlign: "center",
+                    backgroundColor: item.background,
+                    width: 100,
+                    paddingHorizontal: 10,
+                    paddingVertical: 10,
+                    borderRadius: 10,
+                    marginRight: 25,
+                    alignItems: "center",
                   }}
-                  numberOfLines={1}
                 >
-                  {item.name}
-                </Text>
-                <Text size="small">{item.amount}</Text>
-              </View>
+                  <Image
+                    source={item.img}
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
+                    resizeMode="cover"
+                  />
+                  <Text
+                    size="small"
+                    style={{
+                      marginTop: 20,
+                      width: "100%",
+                      textAlign: "center",
+                    }}
+                    numberOfLines={1}
+                  >
+                    {item.name}
+                  </Text>
+                  <Text size="small">{item.amount}</Text>
+                </View>
+              </TouchableOpacity>
             );
           }}
         />
@@ -112,17 +112,5 @@ const SendMoney: FC<SendMoneySection> = ({ data }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontSize: 16,
-  },
-});
 
 export default SendMoney;
